@@ -495,51 +495,23 @@ void delete_vEB(vEBTree *T, int x) {
     }
 }
 
-
-/* =========================================
-   PRINT STRUCTURE
-   ========================================= */
-
 void printStructure(vEBTree *T, int level) {
-
     if (T == NULL)
         return;
-
     for (int i = 0; i < level; i++) {
         printf("    ");
     }
-
     printf("vEB(U=%d, min=%d, max=%d)\n",
            T->u,
            T->min,
            T->max);
-
-
-    /*
-       Base case
-    */
-
     if (T->u <= 2)
         return;
-
-
-    /*
-       Print summary
-    */
-
     for (int i = 0; i < level + 1; i++) {
         printf("    ");
     }
-
     printf("Summary:\n");
-
     printStructure(T->summary, level + 2);
-
-
-    /*
-       Print clusters
-    */
-
     for (int i = 0;
          i < upper_sqrt(T->u);
          i++) {
@@ -547,44 +519,21 @@ void printStructure(vEBTree *T, int level) {
         for (int j = 0; j < level + 1; j++) {
             printf("    ");
         }
-
         printf("Cluster[%d]:\n", i);
-
         printStructure(
             T->cluster[i],
             level + 2
         );
     }
 }
-
-
-/* =========================================
-   MAIN
-   ========================================= */
-
 int main() {
-
-    /*
-       Universe size = 16
-    */
-
     int U = 16;
-
     vEBTree *T = create_vEB(U);
-
-
-    /* -------------------------------------
-       INSERT
-       ------------------------------------- */
-
     printf("========== INSERT ==========\n");
-
     int values[] = {
         2, 3, 4, 7, 8, 10, 12, 14
     };
-
     int n = 8;
-
     printf("Inserting: ");
 
     for (int i = 0; i < n; i++) {
@@ -593,22 +542,13 @@ int main() {
 
         insert(T, values[i]);
     }
-
     printf("\n");
-
     printStructure(T, 0);
-
-
-    /* -------------------------------------
-       MEMBER
-       ------------------------------------- */
-
     printf("\n========== MEMBER ==========\n");
 
     int searchValues[] = {
         7, 5, 14
     };
-
     for (int i = 0; i < 3; i++) {
 
         int x = searchValues[i];
@@ -622,18 +562,9 @@ int main() {
             printf("%d is NOT present.\n", x);
         }
     }
-
-
-    /* -------------------------------------
-       SUCCESSOR
-       ------------------------------------- */
-
     printf("\n========== SUCCESSOR ==========\n");
-
     int x = 7;
-
     int s = successor(T, x);
-
     if (s != INF) {
 
         printf("Successor of %d = %d\n",
@@ -643,50 +574,22 @@ int main() {
 
         printf("No successor exists.\n");
     }
-
-
-    /* -------------------------------------
-       PREDECESSOR
-       ------------------------------------- */
-
     printf("\n========== PREDECESSOR ==========\n");
-
     x = 10;
-
     int p = predecessor(T, x);
 
     if (p != -1) {
-
         printf("Predecessor of %d = %d\n",
                x, p);
-
     } else {
-
         printf("No predecessor exists.\n");
     }
-
-
-    /* -------------------------------------
-       DELETE
-       ------------------------------------- */
-
     printf("\n========== DELETE ==========\n");
-
     x = 8;
-
     printf("Deleting %d...\n", x);
-
     delete_vEB(T, x);
-
     printf("\nHeap after deletion:\n");
-
     printStructure(T, 0);
-
-
-    /* -------------------------------------
-       FINAL MEMBER TEST
-       ------------------------------------- */
-
     printf("\n========== FINAL TEST ==========\n");
 
     if (member(T, 8)) {
