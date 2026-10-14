@@ -1,3 +1,6 @@
+// Find the shortest paths between all pairs of vertices in a weighted directed graph using the 
+// Floyd–Warshall algorithm,which uses dynamic programming and matrix multiplication concepts.
+
 #include <stdio.h>
 
 #define INF 99999
