@@ -1,3 +1,6 @@
+// Find the shortest paths from a single source vertex to all other vertices in a 
+// weighted graph using the Bellman-Ford algorithm, 
+// which works even with negative edge weights.
 #include <stdio.h>
 
 #define INF 99999

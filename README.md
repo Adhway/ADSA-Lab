@@ -72,3 +72,6 @@ c) Demonstrate the recursive layout of the structure and print results of each o
 Expected Output: Structure visualization (showing clusters and summary). 
 
 Correct output for predecessor/successor queries. 
+
+## Lab 5
+Find the shortest paths from a single source vertex to all other vertices in a weighted graph using the Bellman-Ford algorithm, which works even with negative edge weights.
